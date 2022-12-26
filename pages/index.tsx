@@ -15,7 +15,8 @@ function Home(props:any) {
 export async function getStaticProps(){
   console.info('in getstatic props');
   return { 
-    props: {products :dummydata.products}
+    props: {products :dummydata.products},
+    revalidate: 10
   };
 }
 
