@@ -2,9 +2,12 @@ import { Fragment } from 'react';
 import dummydata from '../data/dummy-data.json';
 function ProductId(props:any) {
     const products = {props};
+    /* 
+    not needed for blocking fallback
     if(!products){
         return (<p>loading</p>)
     }
+    */
     return (
         <Fragment>
         <h1>
@@ -30,7 +33,7 @@ export async function getStaticProps(context:any){
             // {params :{product:'p2'}},
             // {params :{product:'p3'}}
         ],
-        fallback:true
+        fallback:'blocking'
         /*
         true: this will build the defined pages in paths statically during build time and rest other are build on server side
         if(!params.somnethinh){
