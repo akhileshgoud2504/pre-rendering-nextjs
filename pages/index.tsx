@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import dummydata from '../data/dummy-data.json';
 
 function Home(props:any) {
@@ -5,7 +6,7 @@ function Home(props:any) {
       <ul>
         {props.products.map((item:any,index:any)=>{
           return (
-            <li key={index}>{item.title}</li>
+            <li key={index}><Link href={`${item.id}`}>{item.title}</Link></li>
           )
           })}
       </ul>
