@@ -2,6 +2,9 @@ import { Fragment } from 'react';
 import dummydata from '../data/dummy-data.json';
 function ProductId(props:any) {
     const products = {props};
+    if(!products){
+        return (<p>loading</p>)
+    }
     return (
         <Fragment>
         <h1>
@@ -24,10 +27,20 @@ export async function getStaticProps(context:any){
     return{
         paths:[
             {params :{product:'p1'}},
-            {params :{product:'p2'}},
-            {params :{product:'p3'}}
+            // {params :{product:'p2'}},
+            // {params :{product:'p3'}}
         ],
-        fallback:false
+        fallback:true
+        /*
+        true: this will build the defined pages in paths statically during build time and rest other are build on server side
+        if(!params.somnethinh){
+            return (<p>loading</p>)
+        }
+
+        false: this will build the defined pages in paths statically during build time amd rest other gives 404 page not found
+
+        blocking: this will build the defined pages in paths statically during build time amd rest other are build on server site without any conditional chceking
+        */
     };
   }
 
