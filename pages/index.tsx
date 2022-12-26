@@ -14,6 +14,20 @@ function Home(props:any) {
 
 export async function getStaticProps(){
   console.info('in getstatic props');
+  if(!dummydata){
+    return{
+      redirect:{
+        destination: './datanotfound'
+      }
+    }
+  }
+
+  if(!dummydata.products){
+    return {
+      notFound: true
+    }
+  }
+
   return { 
     props: {products :dummydata.products},
     revalidate: 10
